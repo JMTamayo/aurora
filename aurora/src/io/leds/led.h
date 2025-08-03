@@ -24,7 +24,7 @@ private:
 
 public:
   Led(unsigned int pin, unsigned int channel, unsigned int frequency,
-      unsigned int resolution);
+      unsigned int resolution, unsigned int initial_value);
 
   ~Led();
 
