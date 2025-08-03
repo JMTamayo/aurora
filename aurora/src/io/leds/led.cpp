@@ -19,12 +19,12 @@ const unsigned int Led::highValue() const {
 const unsigned int Led::lowValue() const { return 0; }
 
 Led::Led(unsigned int pin, unsigned int channel, unsigned int frequency,
-         unsigned int resolution)
+         unsigned int resolution, unsigned int initial_value)
     : pin(pin), channel(channel), frequency(frequency), resolution(resolution) {
   ledcSetup(this->getChannel(), this->getFrequency(), this->getResolution());
   ledcAttachPin(this->getPin(), this->getChannel());
 
-  this->Off();
+  this->Set(initial_value);
 }
 
 Led::~Led() {}
