@@ -16,7 +16,7 @@ public:
 
   ~Lcd1602I2c();
 
-  void DisplayStatus(float set_point, float process_value);
+  void DisplayProcessStatus(float set_point, float process_value);
 };
 
 } // namespace displays

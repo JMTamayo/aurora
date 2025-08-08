@@ -28,11 +28,11 @@ public:
 
   ~Led();
 
-  void On();
+  void High();
 
-  void Off();
+  void Low();
 
-  void Set(unsigned int value);
+  void Set(float value);
 };
 
 } // namespace leds

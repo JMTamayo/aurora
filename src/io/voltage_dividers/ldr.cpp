@@ -22,11 +22,6 @@ const float Ldr::getGamma() const { return this->gamma; }
 
 float Ldr::readAnalogValue() const { return analogRead(this->getPin()); }
 
-float Ldr::calculateResistance(float voltage) const {
-  return this->getFixedResistance() * (this->getSupplyVoltage() - voltage) /
-         voltage;
-}
-
 Ldr::Ldr(unsigned int pin, float supply_voltage, unsigned int resolution,
          unsigned int fixed_resistance, float resistance_at_1_lux, float gamma)
     : pin(pin), supply_voltage(supply_voltage), resolution(resolution),
@@ -42,11 +37,15 @@ float Ldr::ReadVoltage() const {
          this->getResolution();
 }
 
-float Ldr::ReadLuminosity() const {
+float Ldr::ReadResistance() const {
   float voltage = this->ReadVoltage();
-  float resistance = this->calculateResistance(voltage);
+  return this->getFixedResistance() * (this->getSupplyVoltage() - voltage) /
+         voltage;
+}
 
-  return pow(resistance / this->getResistanceAt1Lux(), 1 / this->getGamma());
+float Ldr::ReadLuminosity() const {
+  return pow(this->ReadResistance() / this->getResistanceAt1Lux(),
+             1 / this->getGamma());
 }
 
 } // namespace voltage_dividers

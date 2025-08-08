@@ -28,8 +28,6 @@ private:
 
   float readAnalogValue() const;
 
-  float calculateResistance(float voltage) const;
-
 public:
   Ldr(unsigned int pin, float supply_voltage, unsigned int resolution,
       unsigned int fixed_resistance, float resistance_at_1_lux, float gamma);
@@ -37,6 +35,8 @@ public:
   ~Ldr();
 
   float ReadVoltage() const;
+
+  float ReadResistance() const;
 
   float ReadLuminosity() const;
 };
