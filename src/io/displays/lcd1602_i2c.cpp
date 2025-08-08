@@ -16,13 +16,15 @@ Lcd1602I2c::Lcd1602I2c(unsigned int address, unsigned int cols,
 
 Lcd1602I2c::~Lcd1602I2c() { delete lcd; }
 
-void Lcd1602I2c::DisplayStatus(float set_point, float process_value) {
+void Lcd1602I2c::DisplayProcessStatus(float set_point, float process_value) {
+  this->getLcd()->clear();
+
   this->getLcd()->setCursor(0, 0);
-  this->getLcd()->print("SP: ");
+  this->getLcd()->print("SP [lux]: ");
   this->getLcd()->print(set_point);
 
   this->getLcd()->setCursor(0, 1);
-  this->getLcd()->print("PV: ");
+  this->getLcd()->print("PV [lux]: ");
   this->getLcd()->print(process_value);
 }
 

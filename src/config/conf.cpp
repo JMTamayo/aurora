@@ -14,7 +14,7 @@ const unsigned int LED_RESOLUTION = 8;
 
 const unsigned int LED_INITIAL_VALUE = 0;
 
-const unsigned int LDR_PIN = 34;
+const unsigned int LDR_PIN = 4;
 
 const unsigned int LDR_FIXED_RESISTANCE = 5000;
 

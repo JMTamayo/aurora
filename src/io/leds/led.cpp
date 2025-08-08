@@ -29,15 +29,19 @@ Led::Led(unsigned int pin, unsigned int channel, unsigned int frequency,
 
 Led::~Led() {}
 
-void Led::On() { ledcWrite(this->getChannel(), this->highValue()); }
+void Led::High() { ledcWrite(this->getChannel(), this->highValue()); }
 
-void Led::Off() { ledcWrite(this->getChannel(), this->lowValue()); }
+void Led::Low() { ledcWrite(this->getChannel(), this->lowValue()); }
 
-void Led::Set(unsigned int value) {
-  unsigned int maxValue = this->highValue();
-  unsigned int clampedValue = value > maxValue ? maxValue : value;
+void Led::Set(float value) {
+  if (value < 0) {
+    value = 0;
+  } else if (value > 1) {
+    value = 1;
+  }
 
-  ledcWrite(this->getChannel(), clampedValue);
+  unsigned int clamped_value = value * this->highValue();
+  ledcWrite(this->getChannel(), clamped_value);
 }
 
 } // namespace leds

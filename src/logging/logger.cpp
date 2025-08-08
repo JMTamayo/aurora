@@ -28,7 +28,7 @@ void Logger::Warning(String message) {
 }
 
 void Logger::Debug(String message) {
-  Serial.print("[DEBUG] ");
+  // Serial.print("[DEBUG] ");
   Serial.println(message);
 }
 

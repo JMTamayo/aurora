@@ -31,7 +31,5 @@ void setup() {
 }
 
 void loop() {
-  lcd->DisplayStatus(config::SET_POINT, ldr->ReadLuminosity());
-  // logging::logger->Info(String(ldr->ReadResistance()));
-  delay(1000);
+  // TODO: Implement main loop
 }
